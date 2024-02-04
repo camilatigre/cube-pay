@@ -5,40 +5,41 @@ import Grid from '@mui/material/Grid';
 
 import './styles.css'
 
-const TopBar = () => {
+// eslint-disable-next-line react/prop-types
+const TopBar = ({ isLoginPage = false }) => {
     const dateNow = getDate();
 
     console.log(dateNow)
     return (
-        <div className='top-bar'>
-            <AppBar position="static">
-            <Grid container spacing={2}>
+        <div>
+            <AppBar position="static" className='top-bar'>
+                <Grid container alignItems="center">
 
-                <Grid xs={6} md={4}>
-                    <Item>
+                    <Grid item xs={5} md={5}>
                         <Typography
                         variant="h3"
                         >
-                            LOGO
+                            CuboPay
                         </Typography>
-                    </Item>
-                </Grid>
+                    </Grid>
 
-                <Grid xs={6} md={8}>
-                    <Grid container spacing={2}>
-                        <Grid>
-                            <Item>
-                        <Typography variant="body1">
-                            Nome do Usuário 
-                        </Typography>
-                    </Item>
-
-                    
-                        </Grid>
+                    <Grid item xs={7} md={7} alignItems="center">
+                        {!isLoginPage ? <Grid container justifyContent="flex-end">
+                            <Grid item xs={3} md={3}>
+                                <Typography variant="body1">
+                                    Nome do Usuário 
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={5} md={5}>
+                                <Typography variant="body1">
+                                    {dateNow} 
+                                </Typography>
+                            </Grid>
+                        
+                        </Grid> : ''}
                     </Grid>
                 </Grid>
-            </Grid>
-        </AppBar>
+            </AppBar>
         </div>
     )
 }
