@@ -2,7 +2,13 @@ import {useState} from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import TopBar from './commons/components/TopBar/TopBar'
-import { Grid, TextField, Typography, Paper, Button } from '@mui/material'; 
+import {
+Grid,
+TextField,
+Typography,
+Paper,
+Button,
+} from '@mui/material'; 
 import './styles.css'
 import { validateFields } from '../utils/validateFields';
 
@@ -33,7 +39,7 @@ const LoginPage = () => {
                 <Grid container>
                     <Paper className="wrapper" elevation={3}>
                         <Typography variant="h4">
-                            Insira suas credenciais para começar a usar o <strong>Pag Tree</strong>
+                            <strong>Login</strong>
                         </Typography>
                         <Grid container>
                             <Grid item md={12}>

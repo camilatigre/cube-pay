@@ -570,6 +570,13 @@
   resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-5.15.7.tgz#78a0e98ecbd84906bf7339f780e8f41c5d505754"
   integrity sha512-AuF+Wo2Mp/edaO6vJnWjg+gj4tzEz5ChMZnAQpc22DXpSvM8ddgGcZvM7D7F99pIBoSv8ub+Iz0viL+yuGVmhg==
 
+"@mui/icons-material@^5.15.7":
+  version "5.15.7"
+  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.15.7.tgz#6b1cc370894f505b756fa1aa1cbd25b5890d54d5"
+  integrity sha512-EDAc8TVJGIA/imAvR3u4nANl2W5h3QeHieu2gK7Ypez/nIA55p08tHjf8UrMXEpxCAvfZO6piY9S9uaxETdicA==
+  dependencies:
+    "@babel/runtime" "^7.23.9"
+
 "@mui/material@^5.15.7":
   version "5.15.7"
   resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.15.7.tgz#8496d8a2b9f0409a0f82b93f819a48f6f82bc12f"
@@ -2169,11 +2176,6 @@ react-dom@^18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
-
-react-hook-form@^7.50.0:
-  version "7.50.0"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.50.0.tgz#379802d85c7b78e0056229c53607946d34f99a36"
-  integrity sha512-AOhuzM3RdP09ZCnq+Z0yvKGHK25yiOX5phwxjV9L7U6HMla10ezkBnvQ+Pk4GTuDfsC5P2zza3k8mawFwFLVuQ==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
