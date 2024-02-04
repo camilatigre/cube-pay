@@ -1,10 +1,10 @@
 import { createTheme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
+import { lightGreen } from '@mui/material/colors';
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: red[900],
+      main: lightGreen[700],
     },
   },
 });

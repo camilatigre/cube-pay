@@ -19,7 +19,7 @@ const TopBar = ({ isLoginPage = false }) => {
                         <Typography
                         variant="h3"
                         >
-                            CuboPay
+                            PagTree
                         </Typography>
                     </Grid>
 
