@@ -1,4 +1,22 @@
+.MuiGrid-root {margin: 5px 0 0 0;}
+.menu-list {
+  background: #f0efef;
+  position: relative;
+  display: inline-block;
+  height: 100vh;
+}
 
-.menu {
-  background-color: grey;
+.menu-list .arrow-right, .menu-list .arrow-left  {position: absolute; top:0; right:5px; z-index: 2;cursor: pointer;}
+.arrow-right {transform: rotate(90deg);}
+.arrow-left {
+  transform: rotate(-90deg);
+}
+.list-item {
+  cursor: pointer;
+}
+
+.list-item div {text-decoration: none;color:#6e6e6e;display: inline-block;}
+.list-item:hover div svg, .list-item:hover div span {
+  color: #689f38;
+  fill: #689f38;
 }

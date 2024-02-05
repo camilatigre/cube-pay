@@ -11,43 +11,63 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 export const menuItems = [
   {
+    id: 0,
     text: 'Home',
     icon: <HomeIcon />,
+    link: '/dashboard'
   },
   {
+    id: 1,
     text: 'Transações',
-    icon: <AccountBalanceWalletIcon />
+    icon: <AccountBalanceWalletIcon />,
+    link: '/transactions'
   },
   {
+    id: 2,
     text: 'Depositos',
-    icon: <SavingsIcon />
+    icon: <SavingsIcon />,
+    link: '/deposit'
   },
   {
+    id: 3,
     text: 'Pagamentos',
-    icon: <PaymentsIcon />
+    icon: <PaymentsIcon />,
+    link: '/payout'
   },
   {
+    id: 4,
     text: 'Histórico de pagamentos',
-    icon: <ReceiptLongIcon />
+    icon: <ReceiptLongIcon />,
+    link: '/payout-history'
   },
   {
+    id: 5,
     text: 'Acordos',
-    icon: <HandshakeIcon />
+    icon: <HandshakeIcon />,
+    link: '/settlements'
   },
   {
+    id: 6,
     text: 'Configuraçoes',
-    icon: <SettingsIcon />
+    icon: <SettingsIcon />,
+    link: '/settings'
   },
   {
+    id: 7,
     text: 'Usuários',
-    icon: <GroupIcon />
+    icon: <GroupIcon />,
+    link: ''
   },
   {
+    id: 8,
     text: 'Perfil',
-    icon: <AccountBoxIcon />
+    icon: <AccountBoxIcon />,
+    link: ''
   },
   {
+    id: 9,
     text: 'Logout',
-    icon: <LogoutIcon />
+    icon: <LogoutIcon />,
+    link: '',
   }
 ];
