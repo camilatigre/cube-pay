@@ -7,7 +7,7 @@ import { changeSelected } from '../../../../slicers/Menu/slicer';
 import { NavLink } from "react-router-dom";
 import './styles.css'
 // eslint-disable-next-line react/prop-types
-const MenuList = ({ open, index, item }) => {
+const MenuList = ({ index, item }) => {
   const menuSelected = useSelector((state) => state.menu.menuSelected);
 
   const dispatch = useDispatch();
@@ -25,9 +25,7 @@ const MenuList = ({ open, index, item }) => {
           <ListItemIcon>
             {item.icon}
           </ListItemIcon>
-          {open && ( 
-            <ListItemText primary={item.text} />
-          )}
+          <ListItemText primary={item.text} />
       </ListItem>
       </NavLink>
     </div> 

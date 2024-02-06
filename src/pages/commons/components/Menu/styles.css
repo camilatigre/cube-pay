@@ -17,8 +17,8 @@
 
 .list-item div {text-decoration: none;color:#6e6e6e;display: inline-block;}
 
-.list-item:hover div svg,
-.list-item:hover div span,
+.list-item.list-item-selected:hover div svg,
+.list-item.list-item-selected:hover div span,
 .list-item-selected div svg,
 .list-item-selected div span {
   color: #689f38;
@@ -26,3 +26,8 @@
 }
 
 .link {text-decoration: none}
+
+/* .list-item-disabled div svg, .list-item-disabled div span {
+  color: #bababa;
+  fill: #bababa;
+} */

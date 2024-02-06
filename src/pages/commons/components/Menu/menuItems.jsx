@@ -14,7 +14,7 @@ export const menuItems = [
     id: 0,
     text: 'Home',
     icon: <HomeIcon />,
-    link: '/dashboard'
+    link: '/dashboard',
   },
   {
     id: 1,
