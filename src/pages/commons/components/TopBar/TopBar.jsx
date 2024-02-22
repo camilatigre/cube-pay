@@ -8,8 +8,6 @@ import './styles.css'
 // eslint-disable-next-line react/prop-types
 const TopBar = ({ isLoginPage = false }) => {
     const dateNow = getDate();
-
-    console.log(dateNow)
     return (
         <div>
             <AppBar position="static" className='top-bar'>

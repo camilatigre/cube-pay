@@ -17,7 +17,6 @@ export const validateFields = (credentials, setErrors) => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-        // Send credentials to server if there are no errors
-        console.log('Credentials to send:', credentials); // Replace with your actual submission logic
+        return credentials
     }
 }

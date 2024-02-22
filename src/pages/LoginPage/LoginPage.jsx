@@ -1,7 +1,6 @@
-import {useState} from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
-import TopBar from './commons/components/TopBar/TopBar'
+import TopBar from '../commons/components/TopBar/TopBar'
 import {
 Grid,
 TextField,
@@ -10,25 +9,10 @@ Paper,
 Button,
 } from '@mui/material'; 
 import './styles.css'
-import { validateFields } from '../utils/validateFields';
+import useLogin from './useLogin'
 
 const LoginPage = () => {
-    const [credentials, setCredentials] = useState({ email: '', password: '' });
-    const [errors, setErrors] = useState({});
-
-    const handleInputChange = (event) => {
-        setCredentials({
-        ...credentials,
-        [event.target.name]: event.target.value,
-        });
-        setErrors({});
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        validateFields(credentials, setErrors)
-    };
+    const { credentials, errors, isLoading, handleInputChange, handleSubmit } = useLogin({ email: '', password: '' });
   
     return  (
        <div className='login-page'>   
@@ -70,7 +54,7 @@ const LoginPage = () => {
                                     <Button variant="text">Esqueceu a senha?</Button>   
                                 </Grid>
                                 <Grid item md={6} style={{display: 'flex'}} justifyContent="flex-end">
-                                    <Button variant="outlined" onClick={handleSubmit}>Entrar</Button>
+                                    <Button variant="outlined" onClick={handleSubmit}>{isLoading ? 'Entrando' : 'Entrar'}</Button>
                                 </Grid>
                             </Grid>
                         </Grid>
