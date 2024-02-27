@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { validateFields } from '../../utils/validateFields';
 import { loginApi } from '../../api/api';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch} from 'react-redux';
+import { saveAuth } from '../../slicers/Auth/slicer'
 
 const useLogin = (initialValues) => {
   const [credentials, setCredentials] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
     setCredentials({
@@ -24,8 +29,9 @@ const useLogin = (initialValues) => {
 
     try {
       const response = await loginApi(credentials);
-      setIsLoading(false);
-      // redirect
+      dispatch(saveAuth(response))
+      navigate('/merchants');
+
     } catch (error) {
       setIsLoading(false);
       const errorData = await error.response?.json();

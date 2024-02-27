@@ -1,6 +1,6 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
-import TopBar from '../commons/components/TopBar/TopBar'
+import TopBar from '../commons/TopBar/TopBar'
 import {
 Grid,
 TextField,
@@ -11,9 +11,8 @@ Button,
 import './styles.css'
 import useLogin from './useLogin'
 
-const LoginPage = () => {
+const Login = () => {
     const { credentials, errors, isLoading, handleInputChange, handleSubmit } = useLogin({ email: '', password: '' });
-  
     return  (
        <div className='login-page'>   
             <TopBar isLoginPage={true} />
@@ -49,10 +48,18 @@ const LoginPage = () => {
                                 helperText={errors.password}
                                 />
                             </Grid>
+                            <Grid item md={12}>
+                                {errors._general && (
+                                    <Typography variant="body2" color="error" component="p">
+                                        {errors._general}
+                                    </Typography>
+                                )}
+                            </Grid>
                             <Grid  container justifyContent="space-around">
                                 <Grid item md={6}>
                                     <Button variant="text">Esqueceu a senha?</Button>   
                                 </Grid>
+                                
                                 <Grid item md={6} style={{display: 'flex'}} justifyContent="flex-end">
                                     <Button variant="outlined" onClick={handleSubmit}>{isLoading ? 'Entrando' : 'Entrar'}</Button>
                                 </Grid>
@@ -65,4 +72,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage;
+export default Login;

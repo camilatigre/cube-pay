@@ -1,8 +1,8 @@
-import TopBar from "../commons/components/TopBar/TopBar";
-import Menu from "../commons/components/Menu/Menu";
+import TopBar from "../commons/TopBar/TopBar";
+import Menu from "../commons/Menu/Menu";
 import Grid from '@mui/material/Grid';
 import BalanceCard from './BalanceCard'
-import ContentPage from '../commons/components/ContentPage/ContentPage'
+import ContentPage from '../commons/ContentPage/ContentPage'
 import { Typography } from "@mui/material";
 import Card from '@mui/material/Card';
 

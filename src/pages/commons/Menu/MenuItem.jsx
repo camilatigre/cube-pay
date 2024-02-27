@@ -3,7 +3,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useSelector, useDispatch} from 'react-redux';
-import { changeSelected } from '../../../../slicers/Menu/slicer';
+import { changeSelected } from '../../../slicers/Menu/slicer';
 import { NavLink } from "react-router-dom";
 import './styles.css'
 // eslint-disable-next-line react/prop-types

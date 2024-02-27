@@ -1,15 +1,17 @@
 import React from 'react'
 import {createRoot} from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage/LoginPage';
-import HomePage from './pages/HomePage/HomePage'
+import Login from './pages/Login/Login'
+import Dashboard from './pages/Dashboard/Dashboard'
+import Merchants from './pages/Merchants/Merchants'
+import Transactions from './pages/Transactions/Transactions';
+import DepositPage from './pages/DepositPage';
+
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme';
 import { Provider } from 'react-redux';
 import './index.css'
 import {store} from './store';
-import TransactionsPage from './pages/TransactionsPage/TransactionsPage';
-import DepositPage from './pages/DepositPage';
 
 const root = createRoot(document.getElementById("root"));
 
@@ -19,9 +21,10 @@ root.render(
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/dashboard" element={<HomePage />} />
-            <Route path="/transactions" element={<TransactionsPage />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/merchants" element={<Merchants />} />
+            <Route path="/dashboard/:merchant-id" element={<Dashboard />} />
+            <Route path="/transactions" element={<Transactions />} />
             <Route path="/deposit" element={<DepositPage />} />
           </Routes>
         </BrowserRouter>
