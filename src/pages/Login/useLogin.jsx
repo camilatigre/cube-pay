@@ -1,9 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { validateFields } from '../../utils/validateFields';
 import { loginApi } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
-import { saveAuth } from '../../slicers/Auth/slicer'
 
 const useLogin = (initialValues) => {
   const [credentials, setCredentials] = useState(initialValues);
@@ -11,7 +9,11 @@ const useLogin = (initialValues) => {
   const [apiErrors, setApiErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    sessionStorage.clear();
+  }, [])
 
   const handleInputChange = (event) => {
     setCredentials({
@@ -35,8 +37,7 @@ const useLogin = (initialValues) => {
 
       if (response.status === 200) {
         const result = await response.json();
-        console.log(result)
-        dispatch(saveAuth(result));
+        sessionStorage.setItem('auth', JSON.stringify(result));
         navigate('/merchants')
         return; 
       }

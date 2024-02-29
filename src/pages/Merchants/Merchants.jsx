@@ -9,14 +9,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-// import { useSelector, useDispatch} from 'react-redux'
 
 import './styles.css'
-// import { useEffect } from "react";
+
 const MerchantsPage = () => {
-    // const dispatch = useDispatch();
-    // const merchants = useSelector(state => state.merchants.data);
-    // const isLoading = useSelector(state => state.merchants.isLoading);
 
     const createData = (name) => {
         return { name };
@@ -24,9 +20,8 @@ const MerchantsPage = () => {
 
     const rows = [
         createData('Merchant 1'),
-        createData('Merchant 1'),
+        createData('Merchant 2'),
     ];
-
 
     return (
         <PermissionWrapper hasPermission={true}>

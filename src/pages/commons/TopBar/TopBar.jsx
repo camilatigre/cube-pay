@@ -2,12 +2,13 @@ import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import { getDate } from '../../../utils/getDate'
 import Grid from '@mui/material/Grid'; 
-
 import './styles.css'
 
 // eslint-disable-next-line react/prop-types
 const TopBar = ({ isLoginPage = false }) => {
     const dateNow = getDate();
+    const userInfo = JSON.parse(sessionStorage.getItem('auth'))
+    
     return (
         <div>
             <AppBar position="static" className='top-bar'>
@@ -25,7 +26,7 @@ const TopBar = ({ isLoginPage = false }) => {
                         {!isLoginPage ? <Grid container justifyContent="flex-end">
                             <Grid item xs={3} md={3}>
                                 <Typography variant="body1">
-                                    Nome do Usuário 
+                                    {userInfo && userInfo?.user?.name} 
                                 </Typography>
                             </Grid>
                             <Grid item xs={5} md={5}>
