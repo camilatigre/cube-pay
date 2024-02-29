@@ -11,26 +11,7 @@ const handleApi = async (endpoint, method, body = null) => {
       headers,
       body: body ? JSON.stringify(body) : null,
     });
-
-    if (!response.ok) {
-      let errorMessage = `API call failed with status ${response.status}`;
-      const contentType = response.headers.get('Content-Type');
-
-      
-      if (contentType?.includes('json')) {
-        try {
-          const errorData = await response.json();
-          errorMessage = parseErrorMessage(errorData);
-        } catch (error) {
-          return error
-        }
-      }
-
-      throw new Error(errorMessage); 
-    }
-
-    const data = await response.json();
-    return data;
+    return response;
   } catch (error) {
     return error.message  
   }

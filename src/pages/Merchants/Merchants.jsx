@@ -27,24 +27,13 @@ const MerchantsPage = () => {
         createData('Merchant 1'),
     ];
 
-//     useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         dispatch(fetchMerchants()); // Dispatch fetch action directly
-//       } catch (error) {
-//         console.error('Error fetching merchants:', error);
-//       }
-//     };
-
-//     fetchData();
-//   }, [dispatch]);
 
     return (
         <PermissionWrapper hasPermission={true}>
             <ContentPage>
                 <TopBar />
                     <Grid container spacing={2} className="merchants">
-                        <Grid item xs={8}>
+                        <Grid item xs={9}>
                             <TableContainer component={Paper}>
                                 <Table aria-label="simple table">
                                     <TableHead>

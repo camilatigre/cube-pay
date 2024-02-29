@@ -12,7 +12,7 @@ import './styles.css'
 import useLogin from './useLogin'
 
 const Login = () => {
-    const { credentials, errors, isLoading, handleInputChange, handleSubmit } = useLogin({ email: '', password: '' });
+    const { credentials, apiErrors, validationErrors, isLoading, handleInputChange, handleSubmit } = useLogin({ email: '', password: '' });
     return  (
        <div className='login-page'>   
             <TopBar isLoginPage={true} />
@@ -32,8 +32,8 @@ const Login = () => {
                                 name="email"
                                 value={credentials.email}
                                 onChange={handleInputChange}
-                                error={!!errors.email}
-                                helperText={errors.email}
+                                error={!!validationErrors.email}
+                                helperText={validationErrors.email}
                                 />
                             </Grid>
                             <Grid item md={12}>
@@ -44,20 +44,20 @@ const Login = () => {
                                 name="password"
                                 value={credentials.password}
                                 onChange={handleInputChange}
-                                error={!!errors.password}
-                                helperText={errors.password}
+                                error={!!validationErrors.password}
+                                helperText={validationErrors.password}
                                 />
                             </Grid>
                             <Grid item md={12}>
-                                {errors._general && (
+                                {apiErrors._general && (
                                     <Typography variant="body2" color="error" component="p">
-                                        {errors._general}
+                                        {apiErrors._general}
                                     </Typography>
                                 )}
                             </Grid>
                             <Grid  container justifyContent="space-around">
                                 <Grid item md={6}>
-                                    <Button variant="text">Esqueceu a senha?</Button>   
+                                    <Button variant="text" disabled={true}>Esqueceu a senha?</Button>   
                                 </Grid>
                                 
                                 <Grid item md={6} style={{display: 'flex'}} justifyContent="flex-end">

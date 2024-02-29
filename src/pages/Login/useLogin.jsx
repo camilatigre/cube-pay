@@ -7,7 +7,8 @@ import { saveAuth } from '../../slicers/Auth/slicer'
 
 const useLogin = (initialValues) => {
   const [credentials, setCredentials] = useState(initialValues);
-  const [errors, setErrors] = useState({});
+  const [validationErrors, setValidationErrors] = useState({});
+  const [apiErrors, setApiErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -17,43 +18,43 @@ const useLogin = (initialValues) => {
       ...credentials,
       [event.target.name]: event.target.value,
     });
-    setErrors({});
+    setApiErrors({});
+    setValidationErrors({})
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (validateFields(credentials, setErrors)) return;
+    if (validateFields(credentials, setValidationErrors)) return;
 
     setIsLoading(true);
 
     try {
       const response = await loginApi(credentials);
-      dispatch(saveAuth(response))
-      navigate('/merchants');
+      setIsLoading(false);
 
+      if (response.status === 200) {
+        const result = await response.json();
+        console.log(result)
+        dispatch(saveAuth(result));
+        navigate('/merchants')
+        return; 
+      }
+
+      if (response.status !== 200) {
+        setApiErrors({ _general: 'Algo estranho aconteceu. Cheque suas credenciais'})
+        return; 
+      }
     } catch (error) {
       setIsLoading(false);
-      const errorData = await error.response?.json();
-      setErrors(extractPropertyErrors(errorData));
+      setApiErrors({_general: 'Algo estranho ocorreu. Tente novamente mais tarde.'});
     }
-  };
-
-  const extractPropertyErrors = (errorData) => {
-    const errors = {};
-    if (errorData && errorData.errors) {
-      for (const field in errorData.errors) {
-        errors[field] = errorData.errors[field].join(', ');
-      }
-    } else if (errorData && errorData.message) {
-      errors._general = errorData.message; // Set a general error message
-    }
-    return errors;
   };
 
   return {
     credentials,
-    errors,
+    validationErrors,
+    apiErrors,
     isLoading,
     handleInputChange,
     handleSubmit,
