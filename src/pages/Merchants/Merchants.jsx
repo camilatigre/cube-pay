@@ -17,7 +17,20 @@ import { useNavigate } from 'react-router-dom';
 const MerchantsPage = () => {
     const [apiErrors, setApiErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([
+        {
+            id: 'm_EZhxvcFaEB0hVxs08',
+            name: 'ACME Inc.',
+            type: 'business',
+            document: '0000022221'
+        },
+        {
+            id: 'm_EZhxvcFaEB0hVxs07',
+            name: 'Arcor',
+            type: 'personal',
+            document: '0000022221'
+        }
+    ]);
     const navigate = useNavigate();
 
     useEffect(() =>  {
@@ -31,7 +44,9 @@ const MerchantsPage = () => {
 
                 if (response.status === 200) {
                     const result = await response.json();
-                    setData(result); // Update data state
+                    if(result.length > 0 ) {
+                        setData(result);
+                    }
                 } else {
                     setApiErrors({ _general: 'Algo estranho aconteceu. Tente novamente mais tarde' });
                 }
@@ -47,27 +62,10 @@ const MerchantsPage = () => {
     }, []);
 
 
-    const createData = (id, name, type, document) => {
-        return { id, name, type, document };
-    }
-
-    const rows = [
-        {
-            id: 'm_EZhxvcFaEB0hVxs08',
-            name: 'ACME Inc.',
-            type: 'business',
-            document: '0000022221'
-        },
-        {
-            id: 'm_EZhxvcFaEB0hVxs07',
-            name: 'Arcor',
-            type: 'personal',
-            document: '0000022221'
-        }
-    ];
+    
 
      const handleRowClick = (row) => {
-        navigate(`/merchants/${row.id}`)
+        navigate(`/dashboard/${row.id}`)
     }
 
 
@@ -88,7 +86,7 @@ const MerchantsPage = () => {
                                     </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                    {rows.map((row, index) => (
+                                    {data.map((row, index) => (
                                         <TableRow
                                         onClick={() => handleRowClick(row)}
                                         key={row.id}
