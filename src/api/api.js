@@ -24,3 +24,7 @@ export const loginApi = async (credentials) => {
 export const getMerchantsApi = async (token) => {
   return await handleApi('_private/merchants', 'GET', null, token);
 };
+
+export const getBalanceApi = async (token) => {
+  return await handleApi(`/_private/environments/test/wallets`, 'GET', null, token);
+};

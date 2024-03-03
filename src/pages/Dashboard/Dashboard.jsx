@@ -4,10 +4,13 @@ import Grid from '@mui/material/Grid';
 import BalanceCard from './BalanceCard'
 import ContentPage from '../commons/ContentPage/ContentPage'
 import { Typography } from "@mui/material";
-import Card from '@mui/material/Card';
+// import Card from '@mui/material/Card';
 
 import './styles.css'
+
 const HomePage = () => {
+
+    
     return (
         <>
             <TopBar />
@@ -23,7 +26,7 @@ const HomePage = () => {
                         <Grid item sm={4} >
                             <BalanceCard coin="BRL" balance="41.293,93" />
                         </Grid>
-                        <Grid item sm={4}>
+                        {/* <Grid item sm={4}>
                             <BalanceCard coin="USD" balance="200,50" />
                         </Grid>
                         <Grid item sm={4}>
@@ -44,7 +47,7 @@ const HomePage = () => {
                             </Typography>
                                 
                         </Card>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                 </ContentPage>
             </Grid>

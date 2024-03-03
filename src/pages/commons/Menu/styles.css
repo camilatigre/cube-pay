@@ -1,7 +1,8 @@
-.MuiGrid-root {margin: 5px 0 0 0;}
+.MuiGrid-root {margin-top: 5px;margin-right: 20px;}
+.MuiFormControlLabel-labelPlacementEnd {margin-left: 5px !important; color: #6e6e6e}
 .menu-list {
+  min-width: 250px;
   background: #f0efef;
-  position: relative;
   display: inline-block;
   height: 100vh;
 }

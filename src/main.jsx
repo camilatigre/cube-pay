@@ -23,7 +23,7 @@ root.render(
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/merchants" element={<Merchants />} />
-            <Route path="/dashboard/:merchant-id" element={<Dashboard />} />
+            <Route path="/dashboard?/:id" element={<Dashboard />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/deposit" element={<DepositPage />} />
           </Routes>
