@@ -65,7 +65,7 @@ const MerchantsPage = () => {
     
 
      const handleRowClick = (row) => {
-        navigate('/dashboard', row.id)
+        navigate('/dashboard', { state: { key: row.id } })
     }
 
 

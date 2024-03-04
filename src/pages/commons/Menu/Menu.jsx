@@ -3,17 +3,29 @@ import List from '@mui/material/List';
 import {menuItems} from './menuItems'
 import MenuList from './MenuItem';
 import './styles.css';
+import { useSelector, useDispatch } from 'react-redux';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import {useState} from 'react'
-
+import { saveEnvSelectedId } from '../../../slicers/Dashboard/slicer';
 
 const Menu = () => {
 
   const [checked, setChecked] = useState(false);
+  const envs = useSelector((state) => state.dashboard);
+  const dispatch = useDispatch()
+
+  console.log(envs)
 
   const handleSwitchChange = (event) => {
     setChecked(event.target.checked);
+
+    console.log(envs.envs)
+    if(event.target.checked){
+      dispatch(saveEnvSelectedId(envs.envs.liveEnv.id))
+    } else {
+      dispatch(saveEnvSelectedId(envs.envs.testEnv.id))
+    }
   };
 
   return (

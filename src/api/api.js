@@ -16,13 +16,16 @@ const handleApi = async (endpoint, method, body = null, token = '') => {
   }
 };
 
-
 export const loginApi = async (credentials) => {
   return await handleApi('_private/auth/sign-in', 'POST', credentials);
 };
 
 export const getMerchantsApi = async (token) => {
   return await handleApi('_private/merchants', 'GET', null, token);
+};
+
+export const getEnvByMerchantApi = async (merchantId, token) => {
+  return await handleApi(`_private/merchants/${merchantId}`, 'GET', null, token);
 };
 
 export const getBalanceApi = async (token) => {
