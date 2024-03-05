@@ -26,22 +26,16 @@ export const menuItems = [
     id: 2,
     text: 'Depositos',
     icon: <SavingsIcon />,
-    link: '/deposit'
+    link: '/charges'
   },
   {
     id: 3,
-    text: 'Pagamentos',
-    icon: <PaymentsIcon />,
-    link: '/payout'
-  },
-  {
-    id: 4,
     text: 'Configuraçoes',
     icon: <SettingsIcon />,
     link: '/settings'
   },
   {
-    id: 5,
+    id: 4,
     text: 'Logout',
     icon: <LogoutIcon />,
     link: '',
