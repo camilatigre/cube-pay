@@ -29,5 +29,5 @@ export const getEnvByMerchantApi = async (merchantId, token) => {
 };
 
 export const getWalletsApi = async (envSelectedId, token) => {
-  return await handleApi(`/_private/environments/${envSelectedId}/wallets`, 'GET', null, token);
+  return await handleApi(`_private/environments/${envSelectedId}/wallets`, 'GET', null, token);
 };

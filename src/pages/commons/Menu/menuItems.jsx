@@ -38,7 +38,7 @@ export const menuItems = [
     id: 4,
     text: 'Logout',
     icon: <LogoutIcon />,
-    link: '',
+    link: () => console.log(),
   }
 ];
 

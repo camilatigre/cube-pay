@@ -6,33 +6,30 @@ import './styles.css';
 import { useSelector, useDispatch } from 'react-redux';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import {useState} from 'react'
-import { saveEnvSelectedId } from '../../../slicers/Dashboard/slicer';
+import { saveEnvSelectedId, saveSwitchValue } from '../../../slicers/Dashboard/slicer';
 
 const Menu = () => {
 
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
   const envs = useSelector((state) => state.dashboard);
   const dispatch = useDispatch()
 
-  console.log(envs)
-
   const handleSwitchChange = (event) => {
-    setChecked(event.target.checked);
-
-    console.log(envs.envs)
+    dispatch(saveSwitchValue(event.target.checked))
     if(event.target.checked){
+      console.log(event.target.checked)
       dispatch(saveEnvSelectedId(envs.envs.liveEnv.id))
+      
     } else {
-      dispatch(saveEnvSelectedId(envs.envs.testEnv.id))
+      dispatch(saveEnvSelectedId(event.target.checked))
     }
   };
-
+  
   return (
     <div >
       <Grid item className="menu">
           <List component="nav" aria-label="menu" className='menu-list'>
-          <FormControlLabel control={<Switch checked={checked} onChange={handleSwitchChange} inputProps={{ 'aria-label': 'controlled' }}/>} label="Ambiente: Produção" />
+          <FormControlLabel control={<Switch checked={envs.switchValue} onChange={handleSwitchChange} inputProps={{ 'aria-label': 'controlled' }}/>} label="Ambiente: Produção" />
 
           {menuItems.map((menuItem, index) => (
             <MenuList key={index} item={menuItem} index={index} />

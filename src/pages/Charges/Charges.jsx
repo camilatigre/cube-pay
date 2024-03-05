@@ -143,8 +143,7 @@ const Charges = () => {
                             <TableBody>
                             {table.map((row, index) => (
                                 <TableRow
-                                onClick={() => handleRowClick(row)}
-                                key={row.id}
+                                key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell component="th" scope="row">
