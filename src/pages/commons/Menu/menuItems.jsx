@@ -18,15 +18,15 @@ export const menuItems = [
   },
   {
     id: 1,
-    text: 'Merchants',
-    icon: <SavingsIcon />,
-    link: '/merchants'
-  },
-  {
-    id: 2,
     text: 'Depositos',
     icon: <SavingsIcon />,
     link: '/charges'
+  },
+  {
+    id: 2,
+    text: 'Merchants',
+    icon: <SavingsIcon />,
+    link: '/merchants'
   },
   {
     id: 3,
@@ -34,12 +34,6 @@ export const menuItems = [
     icon: <SettingsIcon />,
     link: '/settings'
   },
-  {
-    id: 4,
-    text: 'Logout',
-    icon: <LogoutIcon />,
-    link: () => console.log(),
-  }
 ];
 
 // export const menuItems = [

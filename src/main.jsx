@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import Merchants from './pages/Merchants/Merchants'
 import Transactions from './pages/Transactions/Transactions';
 import Charges from './pages/Charges/Charges';
+import Register from './pages/Register/Register';
 
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme';
@@ -26,6 +27,7 @@ root.render(
             <Route path="/dashboard?/:id" element={<Dashboard />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/charges" element={<Charges />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

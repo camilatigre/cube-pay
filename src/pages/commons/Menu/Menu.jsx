@@ -7,10 +7,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { saveEnvSelectedId, saveSwitchValue } from '../../../slicers/Dashboard/slicer';
-
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { signOut } from '../../../api/api';
+import {useNavigate} from 'react-router-dom'
 const Menu = () => {
 
-  // const [checked, setChecked] = useState(false);
+  const navigate = useNavigate();
   const envs = useSelector((state) => state.dashboard);
   const dispatch = useDispatch()
 
@@ -24,6 +29,12 @@ const Menu = () => {
       dispatch(saveEnvSelectedId(event.target.checked))
     }
   };
+
+  const handleSignout = async () => {
+    sessionStorage.clear();
+    await signOut()
+    navigate("/")
+  }
   
   return (
     <div >
@@ -34,6 +45,15 @@ const Menu = () => {
           {menuItems.map((menuItem, index) => (
             <MenuList key={index} item={menuItem} index={index} />
           ))}
+
+          <div className='logout' onClick={handleSignout}>
+            <ListItem className='list-item'>
+              <ListItemIcon>
+                <LogoutIcon />
+              </ListItemIcon>
+            <ListItemText primary={'Logout'} />
+          </ListItem>
+          </div>
         </List>
       </Grid>
     </div>

@@ -1,8 +1,13 @@
 export const validateFields = (credentials, setErrors) => {
     const validationErrors = {
+        name: '',
         email: '',
         password: ''
     };
+
+    if (!credentials.password) {
+        validationErrors.name = 'Por favor, informe seu nome';
+    }
 
     if (!credentials.email) {
         validationErrors.email = 'Por favor, informe seu e-mail';

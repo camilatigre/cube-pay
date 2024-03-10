@@ -20,6 +20,10 @@ export const loginApi = async (credentials) => {
   return await handleApi('_private/auth/sign-in', 'POST', credentials);
 };
 
+export const signUpApi = async (credentials) => {
+  return await handleApi('_private/auth/sign-up', 'POST', credentials);
+};
+
 export const getMerchantsApi = async (token) => {
   return await handleApi('_private/merchants', 'GET', null, token);
 };
@@ -30,4 +34,8 @@ export const getEnvByMerchantApi = async (merchantId, token) => {
 
 export const getWalletsApi = async (envSelectedId, token) => {
   return await handleApi(`_private/environments/${envSelectedId}/wallets`, 'GET', null, token);
+};
+
+export const signOut = async () => {
+  return await handleApi(`_private/auth/sign-out`, 'GET');
 };

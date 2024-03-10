@@ -10,6 +10,7 @@ Button,
 } from '@mui/material'; 
 import './styles.css'
 import useLogin from './useLogin'
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
     const { credentials, apiErrors, validationErrors, isLoading, handleInputChange, handleSubmit } = useLogin({ email: '', password: '' });
@@ -38,7 +39,7 @@ const Login = () => {
                             </Grid>
                             <Grid item md={12}>
                                 <TextField
-                                label="Password"
+                                label="Senha"
                                 variant="outlined"
                                 type="password"
                                 name="password"
@@ -57,7 +58,9 @@ const Login = () => {
                             </Grid>
                             <Grid  container justifyContent="space-around">
                                 <Grid item md={6}>
-                                    <Button variant="text" disabled={true}>Esqueceu a senha?</Button>   
+                                    <NavLink to="/register">
+                                        <Button variant="text" >Cadastre-se?</Button>    
+                                    </NavLink> 
                                 </Grid>
                                 
                                 <Grid item md={6} style={{display: 'flex'}} justifyContent="flex-end">
