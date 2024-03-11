@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Merchants from './pages/Merchants/Merchants'
+import MerchantsCreateForm from './pages/Merchants/MerchantCreateForm'
 import Transactions from './pages/Transactions/Transactions';
 import Charges from './pages/Charges/Charges';
 import Register from './pages/Register/Register';
@@ -24,6 +25,7 @@ root.render(
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/merchants" element={<Merchants />} />
+            <Route path="/merchants?/create" element={<MerchantsCreateForm />} />
             <Route path="/dashboard?/:id" element={<Dashboard />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/charges" element={<Charges />} />

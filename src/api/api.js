@@ -24,6 +24,10 @@ export const signUpApi = async (credentials) => {
   return await handleApi('_private/auth/sign-up', 'POST', credentials);
 };
 
+export const createMerchantApi = async (fields, token) => {
+  return await handleApi('_private/merchants', 'POST', fields, token);
+};
+
 export const getMerchantsApi = async (token) => {
   return await handleApi('_private/merchants', 'GET', null, token);
 };

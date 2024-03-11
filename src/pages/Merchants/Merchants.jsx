@@ -25,24 +25,13 @@ const MerchantsPage = () => {
     const [apiErrors, setApiErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [merchants, setData] = useState();
-    // 
-
-//     const handleSwitchChange = (event) => {
-//     dispatch(saveSwitchValue(event.target.checked))
-//     if(event.target.checked){
-//       console.log(event.target.checked)
-//       dispatch(saveEnvSelectedId(envs.envs.liveEnv.id))
-      
-//     } else {
-//       dispatch(saveEnvSelectedId(envs.envs.testEnv.id))
-//     }
-//   };
 
     useEffect(() =>  {
         const userInfo = JSON.parse(sessionStorage.getItem('auth'))
+        console.log(userInfo)
         const fetchMerchants = async () => {
             try {
-                setIsLoading(true); // Set loading state before fetching
+                setIsLoading(true);
 
                 const accessToken = userInfo?.accessToken
                 const response = await getMerchantsApi(accessToken);

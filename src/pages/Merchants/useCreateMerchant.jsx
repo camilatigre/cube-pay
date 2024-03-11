@@ -1,23 +1,17 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { validateFields } from '../../utils/validateFields';
-import { signUpApi } from '../../api/api';
-import { useNavigate } from 'react-router-dom';
+import { createMerchantApi } from '../../api/api';
 
 const useLogin = (initialValues) => {
-  const [credentials, setCredentials] = useState(initialValues);
+  const [fields, setFields] = useState(initialValues);
   const [validationErrors, setValidationErrors] = useState({});
   const [apiErrors, setApiErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    sessionStorage.clear();
-  }, [])
 
   const handleInputChange = (event) => {
-    
-    setCredentials({
-      ...credentials,
+    setFields({
+      ...fields,
       [event.target.name]: event.target.value,
     });
     setApiErrors({});
@@ -27,24 +21,28 @@ const useLogin = (initialValues) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(credentials)
-    if (validateFields(credentials, setValidationErrors)) return;
+    if (validateFields(fields, setValidationErrors)) return;
+
+    const filteredObjects = Object.fromEntries(
+        Object.entries(fields).filter(([key, value]) => value !== '')
+      );
 
     setIsLoading(true);
 
     try {
-      const response = await signUpApi(credentials);
+      const token = JSON.parse(sessionStorage.getItem('auth')).accessToken
+
+      
+      const response = await createMerchantApi(filteredObjects, token);
       setIsLoading(false);
 
       if (response.status === 201) {
         const result = await response.json();
-        sessionStorage.setItem('auth', JSON.stringify(result));
-        navigate('/merchants')
         return; 
       }
 
-      if (response.status !== 200) {
-        setApiErrors({ _general: 'Algo estranho aconteceu. Cheque suas credenciais'})
+      if (response.status !== 201) {
+        setApiErrors({ _general: 'Algo estranho aconteceu. Cheque os campos obrigatórios'})
         return; 
       }
     } catch (error) {
@@ -54,7 +52,7 @@ const useLogin = (initialValues) => {
   };
 
   return {
-    credentials,
+    fields,
     validationErrors,
     apiErrors,
     isLoading,
