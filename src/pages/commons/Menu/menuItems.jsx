@@ -28,12 +28,6 @@ export const menuItems = [
     icon: <SavingsIcon />,
     link: '/merchants'
   },
-  {
-    id: 3,
-    text: 'Configuraçoes',
-    icon: <SettingsIcon />,
-    link: '/settings'
-  },
 ];
 
 // export const menuItems = [

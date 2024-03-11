@@ -4,38 +4,11 @@ import Grid from '@mui/material/Grid';
 import BalanceCard from './BalanceCard'
 import ContentPage from '../commons/ContentPage/ContentPage'
 import { Typography } from "@mui/material";
-import {useLocation} from "react-router-dom"
-// import Card from '@mui/material/Card';
-import {getEnvByMerchantApi, getWalletsApi} from '../../api/api'
+import {getWalletsApi} from '../../api/api'
 import './styles.css'
 import { useEffect, useState } from "react";
-import { saveEnvs } from '../../slicers/Dashboard/slicer';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-
-const mockresult = {
-  "id": "m_EZhxvcFaEB0hVxs08",
-  "type": "business",
-  "name": "ACME Inc.",
-  "document": "11122233344",
-  "email": "fluvb@gmail.com",
-  "phone": "11987654321",
-  "address": {
-    "line1": "Rua dos Bobos, 0",
-    "line2": "Apto 42",
-    "city": "São Paulo",
-    "state": "SP",
-    "zip": "01234567"
-  },
-  "liveEnv": {
-    "id": "env_0PR863Q0An5WvF0cg",
-    "name": "live"
-  },
-  "testEnv": {
-    "id": "env_0PR863Q0An5WvF0cg",
-    "name": "live"
-  }
-}
 
 const walletMock = [
   {
@@ -47,39 +20,20 @@ const walletMock = [
 
 
 const HomePage = () => {
-    const location = useLocation()
     const [apiErrors, setApiErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [wallet, setWallet] = useState(walletMock) // alterar quando a api estiver funcionando
-    const [merchant, setmerchant] = useState(mockresult) // alterar quando a api estiver funcionando
-    const dispatch = useDispatch();
+    
     const envSelectedId = useSelector((state) => state.dashboard.envSelectedId);
 
      useEffect(() =>  {
-        const userInfo = JSON.parse(sessionStorage.getItem('auth'))
-        const fetchMerchants = async () => {
-            try {
-
-                const accessToken = userInfo?.accessToken
-                const merchantId = location.state.key;
-                const response = await getEnvByMerchantApi(merchantId, envSelectedId, accessToken);
-
-                if (response.status === 200) {
-                    setIsLoading(false)
-                    const result = await response.json();
-                    setmerchant(result)  
-                } else {
-                    setApiErrors({ _general: 'Algo estranho aconteceu. Tente novamente mais tarde' });
-                }
-            } catch (error) {
-                setApiErrors({ _general: 'Algo estranho aconteceu. Tente novamente mais tarde' });
-            }
-        };
+        
 
         const getWallets = async () => {
             try {
 
                 const accessToken = userInfo?.accessToken
+                console.log(envSelectedId)
                 const response = await getWalletsApi(envSelectedId, accessToken);
 
                 if (response.status === 200) {
@@ -94,12 +48,7 @@ const HomePage = () => {
             }
         };
 
-
-        fetchMerchants();
         getWallets()
-
-
-        dispatch(saveEnvs({liveEnv: merchant.liveEnv, testEnv: merchant.testEnv}))
 
     }, []);
     return (
