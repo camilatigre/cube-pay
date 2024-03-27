@@ -9,13 +9,18 @@ import {
 } from '@mui/material';
 import useCreateMerchant from './useCreateMerchant'
 
-const MerchantCreateForm = (onClose, open) => {
-    console.log(open)
+const MerchantCreateForm = () => {
     const { fields, apiErrors, validationErrors, isLoading, handleInputChange, handleSubmit } = useCreateMerchant({ name: '', type: '', email: '', document: '', phone: '', address: '' });
     return (
          <PermissionWrapper hasPermission={true}>
                 <TopBar />
+                    
                     <Grid container className="merchants">
+                        <Typography
+                        variant="h3"
+                    >
+                        Criar novo mercante
+                    </Typography>
                         <Grid item xs={9}>
                             <Paper className="paper-form" elevation={3}>
                             <Grid container>
@@ -78,11 +83,13 @@ const MerchantCreateForm = (onClose, open) => {
                                         className="field field-right"
                                         label="Telefone"
                                         variant="outlined"
+                                        type="tel"
                                         name="phone"
                                         value={fields.phone}
                                         onChange={handleInputChange}
                                         error={!!validationErrors.phone}
                                         helperText={validationErrors.phone}
+                                        
                                     />
                                 </Grid>
 
@@ -100,7 +107,7 @@ const MerchantCreateForm = (onClose, open) => {
                                 </Grid>
 
                                 <div className="error-button">
-                                    <Grid item md={12} className="api-errors">
+                                <Grid item md={12} className="api-errors">
                                     {apiErrors._general && (
                                         <Typography variant="body2" color="error" component="p">
                                             {apiErrors._general}

@@ -5,13 +5,18 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
 import { useNavigate } from 'react-router-dom';
+import {
+Button,
+} from '@mui/material'; 
 const MerchantsTable = (data) => {
-    const navigate = useNavigate();
+    const listOfMerchants = data.data
+  
+    const navigate = useNavigate()
+    const handleRowClick = (envId) => {
 
-    const handleRowClick = (row) => {
-        navigate('/dashboard', { state: { key: row.id } })
+
+        navigate('/dashboard', { state: { key: envId } })
     }
 
 
@@ -22,12 +27,12 @@ const MerchantsTable = (data) => {
                 <TableCell>Id</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Type</TableCell>
-                <TableCell>Document</TableCell>
-                <TableCell>Document</TableCell>
+                <TableCell>Env Test</TableCell>
+                <TableCell>Env Live</TableCell>
             </TableRow>
             </TableHead>
             <TableBody>
-            {data.map((row, index) => (
+            {listOfMerchants.length > 0 &&  listOfMerchants.map((row, index) => (
                 <TableRow
                 
                 key={row.id}
@@ -42,17 +47,21 @@ const MerchantsTable = (data) => {
                     <TableCell component="th" scope="row">
                         {row.type}
                     </TableCell>
-                    <TableCell component="th" scope="row">
-                        {row.document}
+                    <TableCell component="th" scope="row" className='pointer'>
+                        <Button onClick={() => handleRowClick(row.testEnv.id)}>
+
+                            {'Test'}
+                        </Button>
+                        
                     </TableCell>
-                    <TableCell component="th" scope="row">
-                        <div onClick={() => handleRowClick(row)}>
-                            {'testEnv'}
-                        </div>
-                        <div onClick={() => handleRowClick(row)}>
-                            {'liveEnv'}
-                        </div>
+                    <TableCell>
+
+                        <Button onClick={() => handleRowClick(row.liveEnv.id)}>
+
+                            {'Live'}
+                        </Button>
                     </TableCell>
+
                 </TableRow>
             ))}
             </TableBody>

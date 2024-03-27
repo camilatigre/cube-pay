@@ -1,13 +1,14 @@
 import {  useState } from 'react';
 import { validateFields } from '../../utils/validateFields';
 import { createMerchantApi } from '../../api/api';
+import { useNavigate } from 'react-router-dom';
 
 const useLogin = (initialValues) => {
   const [fields, setFields] = useState(initialValues);
   const [validationErrors, setValidationErrors] = useState({});
   const [apiErrors, setApiErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-
+  const navigate = useNavigate()
 
   const handleInputChange = (event) => {
     setFields({
@@ -38,6 +39,8 @@ const useLogin = (initialValues) => {
 
       if (response.status === 201) {
         const result = await response.json();
+        
+        navigate('/merchants')
         return; 
       }
 
