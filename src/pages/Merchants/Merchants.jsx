@@ -7,20 +7,7 @@ import PermissionWrapper from "../commons/PermissionWrapper/PermissionWrapper";
 import { getMerchantsApi } from '../../api/api'; 
 import './styles.css'
 import { useEffect, useState} from "react";
-// [
-//         {
-//             id: 'm_EZhxvcFaEB0hVxs08',
-//             name: 'ACME Inc.',
-//             type: 'business',
-//             document: '0000022221'
-//         },
-//         {
-//             id: 'm_EZhxvcFaEB0hVxs07',
-//             name: 'Arcor',
-//             type: 'personal',
-//             document: '0000022221'
-//         }
-//     ]
+
 const MerchantsPage = () => {
     const [apiErrors, setApiErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);

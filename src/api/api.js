@@ -40,6 +40,10 @@ export const getWalletsApi = async (envSelectedId, token) => {
   return await handleApi(`_private/environments/${envSelectedId}/wallets`, 'GET', null, token);
 };
 
+export const getChargesApi = async (envSelectedId, token) => {
+  return await handleApi(`_private/environments/${envSelectedId}/wallets`, 'GET', null, token);
+};
+
 export const signOut = async () => {
   return await handleApi(`_private/auth/sign-out`, 'GET');
 };

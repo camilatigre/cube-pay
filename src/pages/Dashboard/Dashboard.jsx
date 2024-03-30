@@ -8,6 +8,7 @@ import {getWalletsApi} from '../../api/api'
 import './styles.css'
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
+import { useLocation } from "react-router-dom";
 
 
 const walletMock = [
@@ -22,28 +23,24 @@ const walletMock = [
 const HomePage = () => {
     const [apiErrors, setApiErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
-    const [wallet, setWallet] = useState(walletMock) // alterar quando a api estiver funcionando
-    
-    const envSelectedId = useSelector((state) => state.dashboard.envSelectedId);
+    const [wallets, setWallets] = useState() // alterar quando a api estiver funcionando
+    const location = useLocation()
 
-     useEffect(() =>  {
+     useEffect(() => {
         
 
         const getWallets = async () => {
-            try {
+            const accessToken = JSON.parse(sessionStorage.getItem('auth')).accessToken;
+            const envSelectedId = location.state.key;
 
-                const accessToken = userInfo?.accessToken
-                console.log(envSelectedId)
-                const response = await getWalletsApi(envSelectedId, accessToken);
 
-                if (response.status === 200) {
-                    setIsLoading(false)
-                    const result = await response.json();
-                    setWallet(result)  
-                } else {
-                    setApiErrors({ _general: 'Algo estranho aconteceu. Tente novamente mais tarde' });
-                }
-            } catch (error) {
+            const response = await getWalletsApi(envSelectedId, accessToken);
+
+            if (response.status === 200) {
+                setIsLoading(false)
+                const result = await response.json();
+                setWallets(result)  
+            } else {
                 setApiErrors({ _general: 'Algo estranho aconteceu. Tente novamente mais tarde' });
             }
         };
@@ -57,38 +54,16 @@ const HomePage = () => {
             <Grid container>
                 <Menu />
 
-                <ContentPage>
+                <ContentPage className="content-page">
                     <Grid item sm={12}>
                         <Typography variant="h2">Home</Typography>
                         <Typography variant="body2">Boas vindas ao PagTree!</Typography>
                     </Grid>
-                    <Grid container spacing={2} className="balance-cards">
+                    {wallets && wallets.map(wallet => <Grid container spacing={2} className="balance-cards">
                         <Grid item sm={4} >
-                            <BalanceCard coin={wallet[0].currency} balance={wallet[0].balance} />
+                            <BalanceCard coin={wallet.currency} balance={wallet.balance} />
                         </Grid>
-                        {/* <Grid item sm={4}>
-                            <BalanceCard coin="USD" balance="200,50" />
-                        </Grid>
-                        <Grid item sm={4}>
-                            <BalanceCard coin="EUR" balance="00,00" />
-                        </Grid>
-                        <Grid item sm={6}>
-                            <Card className='card'>
-                                <Typography variant="h6">
-                                    {"4,97"}{" USD/BRL"}
-                                </Typography>
-                                    
-                            </Card>
-                        </Grid>
-                        <Grid item sm={6}>
-                            <Card className='card'>
-                            <Typography variant="h6">
-                                {"157.048"}{" Transactions"}
-                            </Typography>
-                                
-                        </Card>
-                        </Grid> */}
-                    </Grid>
+                    </Grid>)}
                 </ContentPage>
             </Grid>
         </>
