@@ -41,7 +41,7 @@ export const getWalletsApi = async (envSelectedId, token) => {
 };
 
 export const getChargesApi = async (envSelectedId, token) => {
-  return await handleApi(`_private/environments/${envSelectedId}/wallets`, 'GET', null, token);
+  return await handleApi(`_private/environments/${envSelectedId}/charges`, 'GET', null, token);
 };
 
 export const signOut = async () => {

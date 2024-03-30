@@ -8,15 +8,18 @@ import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
 import {
 Button,
-} from '@mui/material'; 
+} from '@mui/material';
+import { useDispatch} from 'react-redux';
+import { saveEnvSelectedId } from '../../slicers/Dashboard/slicer'; 
 const MerchantsTable = (data) => {
     const listOfMerchants = data.data
-  
+    const dispatch = useDispatch();
+
     const navigate = useNavigate()
     const handleRowClick = (envId) => {
+        navigate(`/dashboard`)
 
-
-        navigate('/dashboard', { state: { key: envId } })
+        dispatch(saveEnvSelectedId(envId))
     }
 
 
