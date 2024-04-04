@@ -26,7 +26,7 @@ const HomePage = () => {
             if (response.status === 200) {
                 setIsLoading(false)
                 const result = await response.json();
-                setWallets(result)  
+                setWallets(result)
             } else {
                 setApiErrors({ _general: 'Algo estranho aconteceu. Tente novamente mais tarde' });
             }
@@ -48,7 +48,7 @@ const HomePage = () => {
 
         if(wallets){
             return wallets.map(wallet => <>
-                <Grid key={wallet} spacing={2} className="balance-cards">
+                <Grid key={wallet.id} spacing={2} className="balance-cards">
                     <Grid item sm={4}>
                         <BalanceCard coin={wallet.currency} balance={wallet.balance} />
                     </Grid>

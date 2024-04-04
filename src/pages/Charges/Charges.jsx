@@ -6,7 +6,6 @@ import './styles.css'
 import {getChargesApi} from '../../api/api'
 import ChargesTable from "./ChargesTable";
 import { Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
 import ContentPage from '../commons/ContentPage/ContentPage'
 import { useSelector } from "react-redux";
 
@@ -21,7 +20,6 @@ const Charges = () => {
         
         
         const getCharges = async () => {
-          console.log(env)
             try {
                 setIsLoading(true);
                 const response = await getChargesApi(env, accessToken);
@@ -45,8 +43,6 @@ const Charges = () => {
 
 
     }, []);
-
-    console.log(table)
     return (
         <>
             <TopBar />

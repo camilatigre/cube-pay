@@ -9,7 +9,10 @@ import Paper from '@mui/material/Paper';
 const ChargesTable = (table) => {
 
     const handleContent = () => {
-        if(table && table.items){
+        if(table || !table.items){
+            return 'Não temos itens o suficiente para exibir'
+        }
+        if(table && table.items.length > 0){
             return (
 
         <TableContainer component={Paper} >

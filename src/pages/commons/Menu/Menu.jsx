@@ -8,7 +8,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { signOut } from '../../../api/api';
+import { useNavigate } from 'react-router-dom';
 const Menu = () => {
+  const navigate = useNavigate()
 
   const handleSignout = async () => {
     sessionStorage.clear();

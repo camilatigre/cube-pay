@@ -9,8 +9,6 @@ import './styles.css'
 // eslint-disable-next-line react/prop-types
 const MenuList = ({ index, item }) => {
   const menuSelected = useSelector((state) => state.menu.menuSelected);
-  
-
   const dispatch = useDispatch();
 
   const handleClick = (index, item) => {

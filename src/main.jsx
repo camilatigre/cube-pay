@@ -8,12 +8,13 @@ import MerchantsCreateForm from './pages/Merchants/MerchantCreateForm'
 import Transactions from './pages/Transactions/Transactions';
 import Charges from './pages/Charges/Charges';
 import Register from './pages/Register/Register';
-
+import TransactionsByWallet from './pages/Transactions/TransactionsByWallet';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme';
 import { Provider } from 'react-redux';
 import './index.css'
 import {store} from './store';
+
 
 const root = createRoot(document.getElementById("root"));
 
@@ -28,6 +29,7 @@ root.render(
             <Route path="/merchants?/create" element={<MerchantsCreateForm />} />
             <Route path="/dashboard?/:id" element={<Dashboard />} />
             <Route path="/transactions" element={<Transactions />} />
+            <Route path="/transactions?/:walletId" element={<TransactionsByWallet />} />
             <Route path="/charges" element={<Charges />} />
             <Route path="/register" element={<Register />} />
           </Routes>

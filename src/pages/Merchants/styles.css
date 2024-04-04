@@ -39,3 +39,12 @@
     width: calc(100% - 20px);
     margin-bottom: 20px;
 }
+
+.content-page .title-button {
+    display: flex;
+    justify-content: space-around;
+}
+
+.content-page .title-button .button {
+    margin-top: 20px
+}

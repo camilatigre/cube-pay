@@ -59,7 +59,7 @@ const MerchantsTable = (data) => {
                     </TableCell>
                     <TableCell>
 
-                        <Button onClick={() => handleRowClick(row.liveEnv.id)}>
+                        <Button disabled={!row.liveEnv} onClick={() => handleRowClick(row.liveEnv.id)}>
 
                             {'Live'}
                         </Button>

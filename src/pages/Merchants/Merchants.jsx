@@ -3,10 +3,13 @@ import Grid from '@mui/material/Grid';
 import MerchantsTable from "./MerchantsTable"
 import MerchantCreate from "./MerchantCreate"
 import PermissionWrapper from "../commons/PermissionWrapper/PermissionWrapper";
-
+import { Typography, Button } from "@mui/material";
 import { getMerchantsApi } from '../../api/api'; 
 import './styles.css'
 import { useEffect, useState} from "react";
+import ContentPage from '../commons/ContentPage/ContentPage'
+import { NavLink } from "react-router-dom";
+
 
 const MerchantsPage = () => {
     const [apiErrors, setApiErrors] = useState({});
@@ -15,7 +18,6 @@ const MerchantsPage = () => {
 
     useEffect(() =>  {
         const userInfo = JSON.parse(sessionStorage.getItem('auth'))
-        console.log(userInfo)
         const fetchMerchants = async () => {
             try {
                 setIsLoading(true);
@@ -51,7 +53,16 @@ const MerchantsPage = () => {
 
 
         if(merchants?.length > 0 && !isLoading) {
-            return <MerchantsTable data={merchants} />
+            return <>
+                <div className="title-button">
+                    <Typography variant="h2">Mercantes</Typography>
+                    <NavLink to="/merchants/create" className="button">
+                        <Button variant="text" >Cadastrar mercante</Button>    
+                    </NavLink> 
+                </div>
+                <MerchantsTable data={merchants} />
+            
+            </>
         }
 
         if(merchants?.length === 0 && !isLoading) {
@@ -64,11 +75,15 @@ const MerchantsPage = () => {
     return (
         <PermissionWrapper hasPermission={true}>
                 <TopBar />
+
+                <ContentPage className="content-page">
+                    
                     <Grid container spacing={2} className="merchants">
                         <Grid item xs={9}>
                             {handleContent()}
                         </Grid>
                     </Grid>
+                </ContentPage>
         </PermissionWrapper>
     )
 }

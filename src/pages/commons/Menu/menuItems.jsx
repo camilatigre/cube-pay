@@ -24,9 +24,15 @@ export const menuItems = [
   },
   {
     id: 2,
-    text: 'Merchants',
-    icon: <SavingsIcon />,
+    text: 'Merchantes',
+    icon: <HandshakeIcon />,
     link: '/merchants'
+  },
+  {
+    id: 3,
+    text: 'Transações',
+    icon: <AccountBalanceWalletIcon />,
+    link: '/transactions'
   },
 ];
 

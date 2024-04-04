@@ -78,7 +78,7 @@ const MerchantCreateForm = () => {
                                     />
                                 </Grid>
 
-                                <Grid item md={12}>
+                                {/* <Grid item md={12}>
                                     <TextField
                                         className="field field-right"
                                         label="Telefone"
@@ -104,7 +104,7 @@ const MerchantCreateForm = () => {
                                         error={!!validationErrors.address}
                                         helperText={validationErrors.address}
                                     />
-                                </Grid>
+                                </Grid> */}
 
                                 <div className="error-button">
                                 <Grid item md={12} className="api-errors">

@@ -40,6 +40,10 @@ export const getWalletsApi = async (envSelectedId, token) => {
   return await handleApi(`_private/environments/${envSelectedId}/wallets`, 'GET', null, token);
 };
 
+export const getTransactionsApi = async (walletId, token) => {
+  return await handleApi(`_private/wallets/${walletId}/transactions`, 'GET', null, token);
+};
+
 export const getChargesApi = async (envSelectedId, token) => {
   return await handleApi(`_private/environments/${envSelectedId}/charges`, 'GET', null, token);
 };
