@@ -1,4 +1,4 @@
-const baseUrl = `http://api.staging.pagtree.31.220.53.245.nip.io:4000/`;
+const baseUrl = `https://api.staging.pagtree.31.220.53.245.nip.io:4000/`;
 const handleApi = async (endpoint, method, body = null, token = '') => {
   try {
     const response = await fetch(`${baseUrl}${endpoint}`, {
