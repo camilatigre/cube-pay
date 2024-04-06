@@ -8,5 +8,6 @@
 }
 
 .card {
-    cursor: pointer;
+    display: flex;
+
 }

@@ -1,7 +1,7 @@
 import TopBar from "../commons/TopBar/TopBar";
 import Menu from "../commons/Menu/Menu";
 import Grid from '@mui/material/Grid';
-import { Card } from '@mui/material'
+import { Card, Button } from '@mui/material'
 import {useState, useEffect} from 'react'
 import './styles.css'
 import { getWalletsApi } from '../../api/api'
@@ -58,11 +58,17 @@ const Transactions = () => {
                 <ContentPage className="content-page">
                   <Typography variant="h2">Transações</Typography>
                   {wallets && wallets.map((wallet, index) => <>
-                        <Card key={index} variant="outlined" className='card' onClick={() => handleWallet(wallet.id)}>
-                            <Grid item sm={2} className='icon'>
-                                {`Wallet: ${wallet.currency}`}
+                        <Grid container>
+                            <Grid item sm={4}>
+                                <Card key={index} variant="outlined" className='card'>
+                                    <Typography variant="h6">{`Carteira: ${wallet.currency}`}</Typography>
+                                    
+                                    <Button onClick={() => handleWallet(wallet.id)}>
+                                        - ver transações
+                                    </Button>
+                                </Card>
                             </Grid>
-                        </Card>
+                        </Grid>
                   </>)}
               
 

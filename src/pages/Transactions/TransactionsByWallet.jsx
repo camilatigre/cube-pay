@@ -56,7 +56,7 @@ const TransactionsByWallet = () => {
     const location = useParams()
 
 
-    console.log(location.walletId, table)
+    console.log(table)
 
     useEffect(() =>  {
         const accessToken = JSON.parse(sessionStorage.getItem('auth')).accessToken;
@@ -68,8 +68,8 @@ const TransactionsByWallet = () => {
 
                 if (response.status === 200) {
                     const result = await response.json();
-                    setTableValues(result);
-                    
+                    // setTableValues(result);
+                    console.log(result)
                 } else {
                     setApiErrors({ _general: 'Algo estranho aconteceu. Tente novamente mais tarde' });
                 }
@@ -100,9 +100,8 @@ const TransactionsByWallet = () => {
                         <TableRow>
                             <TableCell>Id</TableCell>
                             <TableCell>Valor</TableCell>
-                            <TableCell>Moeda</TableCell>
-                            <TableCell>Status</TableCell>
-                            <TableCell>Descrição</TableCell>
+                            <TableCell>Total Taxas</TableCell>
+                            <TableCell>Tipo</TableCell>
                             <TableCell>Criada em</TableCell>
                         </TableRow>
                         </TableHead>
@@ -119,16 +118,13 @@ const TransactionsByWallet = () => {
                                     {row.amount}
                                 </TableCell>
                                 <TableCell component="th" scope="row">
-                                    {row.currency}
+                                    {row.fees[0].amount}
                                 </TableCell>
                                 <TableCell component="th" scope="row">
-                                    {row.status}
+                                    {row.tags[0]}
                                 </TableCell>
                                 <TableCell component="th" scope="row">
-                                    {row.meta?.description}
-                                </TableCell>
-                                <TableCell component="th" scope="row">
-                                    {row.createdAt}
+                                    {row.timestamp}
                                 </TableCell>
                             </TableRow>
                         ))}
