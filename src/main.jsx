@@ -24,7 +24,7 @@ root.render(
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Routes>
-            <Route path="/cube-pay/" element={<Login />} />
+            <Route path="/pag-tree/" element={<Login />} />
             <Route path="/merchants" element={<Merchants />} />
             <Route path="/merchants?/create" element={<MerchantsCreateForm />} />
             <Route path="/dashboard?/:id" element={<Dashboard />} />

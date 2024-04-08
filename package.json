@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://github.com/camilatigre/cube-pay/",
+  "homepage": "https://github.com/camilatigre/pag-tree/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
