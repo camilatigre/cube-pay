@@ -15,7 +15,7 @@ const Menu = () => {
   const handleSignout = async () => {
     sessionStorage.clear();
     await signOut()
-    navigate("/")
+    navigate("/pagtree")
   }
   
   return (
