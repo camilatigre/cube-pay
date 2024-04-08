@@ -6,3 +6,17 @@
 .content-page {
     padding-left: 40px
 }
+
+.cell-default {
+    background: grey;
+    text-transform: uppercase;
+    padding: 5px;
+    color: white ;
+    font-size: 14px;
+    border-radius: 15px;
+    max-width: 80px;
+    text-align: center;
+}
+.cell-green {
+    background: #689f38
+}

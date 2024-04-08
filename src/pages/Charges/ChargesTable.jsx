@@ -6,12 +6,18 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-const ChargesTable = (table) => {
+const ChargesTable = (props) => {
+    const {table, isLoading} = props;
 
     const handleContent = () => {
-        if(table || !table.items){
+        if(isLoading) {
+            return 'Carregando...'
+        }
+
+        if(!table || !table.items || table.items?.length === 0){
             return 'Não temos itens o suficiente para exibir'
         }
+
         if(table && table.items.length > 0){
             return (
 
@@ -31,7 +37,6 @@ const ChargesTable = (table) => {
             {table.items.map((row, index) => (
                 <TableRow
                 key={index}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                     <TableCell component="th" scope="row">
                         {index + 1}
@@ -42,11 +47,13 @@ const ChargesTable = (table) => {
                     <TableCell component="th" scope="row">
                         {row.currency}
                     </TableCell>
-                    <TableCell component="th" scope="row">
-                        {row.status}
+                    <TableCell component="th" scope="row" >
+                        <div className={row.status === 'paid' ? 'cell-default cell-green' : 'cell-default'}>
+                            {row.status}
+                        </div>
                     </TableCell>
                     <TableCell component="th" scope="row">
-                        {row.meta?.description}
+                        {row.meta?.description ? row.meta?.description : '-'}
                     </TableCell>
                     <TableCell component="th" scope="row">
                         {row.createdAt}
