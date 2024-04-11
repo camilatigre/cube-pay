@@ -14,6 +14,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { transformTimestamp } from "../../utils/getDate"
 
 const mock = {
   "total": 0,
@@ -106,7 +107,9 @@ const TransactionsByWallet = () => {
                         </TableRow>
                         </TableHead>
                         <TableBody>
-                        {table.items.map((row, index) => (
+                        {table.items.map((row, index) => {
+                          console.log(row.timestamp)
+                          return (
                             <TableRow
                             key={index}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -124,10 +127,10 @@ const TransactionsByWallet = () => {
                                     {row.tags[0]}
                                 </TableCell>
                                 <TableCell component="th" scope="row">
-                                    {row.timestamp}
+                                    {transformTimestamp(row.timestamp)}
                                 </TableCell>
                             </TableRow>
-                        ))}
+                        )})}
                         </TableBody>
                     </Table>
                 </TableContainer>

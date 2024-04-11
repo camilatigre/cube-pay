@@ -48,7 +48,7 @@ const HomePage = () => {
 
         if(wallets){
             return wallets.map(wallet => <>
-                <Grid key={wallet.id} spacing={2} className="balance-cards">
+                <Grid key={wallet.id} className="balance-cards">
                     <Grid item sm={4}>
                         <BalanceCard coin={wallet.currency} balance={wallet.balance} />
                     </Grid>
