@@ -1,5 +1,5 @@
-import TopBar from "../commons/TopBar/TopBar";
-import PermissionWrapper from "../commons/PermissionWrapper/PermissionWrapper";
+import TopBar from "../../commons/TopBar/TopBar";
+import PermissionWrapper from "../../commons/PermissionWrapper/PermissionWrapper";
 import {
     Paper,
     Typography,

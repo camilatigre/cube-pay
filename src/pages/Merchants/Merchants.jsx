@@ -1,15 +1,14 @@
-import TopBar from "../commons/TopBar/TopBar";
+import TopBar from "../../commons/TopBar/TopBar";
 import Grid from '@mui/material/Grid';
 import MerchantsTable from "./MerchantsTable"
 import MerchantCreate from "./MerchantCreate"
-import PermissionWrapper from "../commons/PermissionWrapper/PermissionWrapper";
+import PermissionWrapper from "../../commons/PermissionWrapper/PermissionWrapper";
 import { Typography, Button } from "@mui/material";
 import { getMerchantsApi } from '../../api/api'; 
 import './styles.css'
 import { useEffect, useState} from "react";
-import ContentPage from '../commons/ContentPage/ContentPage'
+import ContentPage from '../../commons/ContentPage/ContentPage'
 import { NavLink } from "react-router-dom";
-
 
 const MerchantsPage = () => {
     const [apiErrors, setApiErrors] = useState({});
@@ -50,7 +49,6 @@ const MerchantsPage = () => {
         if(isLoading) {
             return 'Carregando...'
         }
-
 
         if(merchants?.length > 0 && !isLoading) {
             return <>

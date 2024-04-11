@@ -1,12 +1,12 @@
-import TopBar from "../commons/TopBar/TopBar";
-import Menu from "../commons/Menu/Menu";
+import TopBar from "../../commons/TopBar/TopBar";
+import Menu from "../../commons/Menu/Menu";
 import Grid from '@mui/material/Grid';
 import { Card, Button } from '@mui/material'
 import {useState, useEffect} from 'react'
 import './styles.css'
 import { getWalletsApi } from '../../api/api'
 import { Typography } from "@mui/material";
-import ContentPage from '../commons/ContentPage/ContentPage'
+import ContentPage from '../../commons/ContentPage/ContentPage'
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 

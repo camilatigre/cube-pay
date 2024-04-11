@@ -1,6 +1,6 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
-import TopBar from '../commons/TopBar/TopBar'
+import TopBar from '../../commons/TopBar/TopBar'
 import {
     Grid,
     TextField,
@@ -13,7 +13,11 @@ import useRegister from './useRegister'
 import { NavLink } from "react-router-dom";
 
 const Register = () => {
-    const { credentials, apiErrors, validationErrors, isLoading, handleInputChange, handleSubmit } = useRegister({ name: '', email: '', password: '' });
+    const { credentials, apiErrors, validationErrors, isLoading, handleInputChange, handleSubmit } = useRegister({ 
+        name: '',
+        email: '',
+        password: ''
+    });
     return (
         <div className='login-page'>
             <TopBar isLoginPage={true} />

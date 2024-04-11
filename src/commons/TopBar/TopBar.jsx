@@ -1,6 +1,6 @@
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
-import { getDate } from '../../../utils/getDate'
+import { getDate } from '../../utils/getDate'
 import Grid from '@mui/material/Grid'; 
 import './styles.css'
 

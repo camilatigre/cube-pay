@@ -9,6 +9,5 @@ export const store = configureStore({
         menu: menuSelected,
         auth: auth,
         dashboard: dashboard
-        // merchants: merchants,
     },
 });

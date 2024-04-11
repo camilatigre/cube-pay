@@ -1,12 +1,12 @@
-import TopBar from "../commons/TopBar/TopBar";
-import Menu from "../commons/Menu/Menu";
+import TopBar from "../../commons/TopBar/TopBar";
+import Menu from "../../commons/Menu/Menu";
 import Grid from '@mui/material/Grid';
 import {useState, useEffect} from 'react'
 import './styles.css'
 import {getChargesApi} from '../../api/api'
 import ChargesTable from "./ChargesTable";
 import { Typography } from "@mui/material";
-import ContentPage from '../commons/ContentPage/ContentPage'
+import ContentPage from '../../commons/ContentPage/ContentPage'
 import { useSelector } from "react-redux";
 
 const Charges = () => {
@@ -17,7 +17,6 @@ const Charges = () => {
 
     useEffect(() =>  {
         const accessToken = JSON.parse(sessionStorage.getItem('auth')).accessToken;
-        
         
         const getCharges = async () => {
             try {
@@ -38,23 +37,17 @@ const Charges = () => {
             }
         };
 
-
         getCharges();
-
 
     }, []);
     return (
         <>
             <TopBar />
             <Grid container>
-                <Menu />
-                
+                <Menu />    
                 <ContentPage className="content-page">
                   <Typography variant="h2">Depósitos</Typography>
-                  <div className="charges">
-                    <ChargesTable table={table} isLoading={isLoading} />
-                  </div>
-
+                   <ChargesTable table={table} isLoading={isLoading} />
                 </ContentPage>
             </Grid>
         </>
